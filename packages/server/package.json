@@ -20,12 +20,12 @@
     "node": ">=22.19.0"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "node init && tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run --passWithNoTests",
     "lint": "tsc -p tsconfig.json --noEmit",
     "smoke": "node dist/smoke.js",
-    "start": "node dist/main.js"
+    "start": "node init && node dist/main.js"
   },
   "dependencies": {
     "@earendil-works/pi-agent-core": "^1.0.1",

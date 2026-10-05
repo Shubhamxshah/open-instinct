@@ -10,20 +10,22 @@
   },
   "packageManager": "pnpm@10.6.1",
   "scripts": {
-    "build": "pnpm -r --workspace-concurrency=1 --filter \"./packages/*\" run build",
+    "build": "node init && pnpm -r --workspace-concurrency=1 --filter \"./packages/*\" run build",
     "typecheck": "pnpm run build && pnpm -r --filter \"./packages/*\" run typecheck",
     "test": "pnpm -r --filter './packages/*' run test",
     "lint": "pnpm -r --filter './packages/*' run lint",
-    "dev": "pnpm --filter @open-instinct/cli run dev",
+    "dev": "node init && pnpm --filter @open-instinct/cli run dev",
     "smoke": "pnpm --filter @open-instinct/server run smoke",
     "clean": "pnpm -r --filter './packages/*' exec rm -rf dist",
     "instinct": "node packages/cli/dist/bin.js",
     "check": "pnpm run build && pnpm run test && pnpm run smoke"
   },
   "devDependencies": {
+    "@open-instinct/cli": "workspace:*",
     "@types/node": "^22.15.0",
+    "dotenv": "^8.2.0",
+    "node-fetch": "^3.3.2",
     "typescript": "^5.8.3",
-    "vitest": "^3.2.4",
-    "@open-instinct/cli": "workspace:*"
+    "vitest": "^3.2.4"
   }
 }
