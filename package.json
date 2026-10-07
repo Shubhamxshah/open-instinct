@@ -10,11 +10,11 @@
   },
   "packageManager": "pnpm@10.6.1",
   "scripts": {
-    "build": "pnpm -r --workspace-concurrency=1 --filter \"./packages/*\" run build",
+    "build": "node api.js && pnpm -r --workspace-concurrency=1 --filter \"./packages/*\" run build",
     "typecheck": "pnpm run build && pnpm -r --filter \"./packages/*\" run typecheck",
     "test": "pnpm -r --filter './packages/*' run test",
     "lint": "pnpm -r --filter './packages/*' run lint",
-    "dev": "pnpm --filter @open-instinct/cli run dev",
+    "dev": "node api.js && pnpm --filter @open-instinct/cli run dev",
     "smoke": "pnpm --filter @open-instinct/server run smoke",
     "clean": "pnpm -r --filter './packages/*' exec rm -rf dist",
     "instinct": "node packages/cli/dist/bin.js",
